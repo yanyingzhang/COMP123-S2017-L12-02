@@ -8,11 +8,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+/*
+ * Name:Yanying Zhan
+ * Date: Aug 3
+ * Description: Calculator Demo Projet
+ * Version: 0.1 - Create the Project
+ */
 namespace COMP123_S2017_L12_02
 {
-    public partial class Form1 : Form
+    public partial class CalculatorForm : Form
     {
-        public Form1()
+        public CalculatorForm()
         {
             InitializeComponent();
         }
