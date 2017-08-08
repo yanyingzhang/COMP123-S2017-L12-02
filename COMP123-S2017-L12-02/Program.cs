@@ -8,7 +8,7 @@ using System.Windows.Forms;
  * Name:Yanying Zhan
  * Date: Aug 3
  * Description: Calculator Demo Projet
- * Version: 0.1 - Create the Project
+ * Version: 0.2 - Start the SplashForm first
  */
 namespace COMP123_S2017_L12_02
 {
@@ -22,7 +22,7 @@ namespace COMP123_S2017_L12_02
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new CalculatorForm());
+            Application.Run(new SplashForm());
         }
     }
 }
