@@ -12,16 +12,20 @@ using System.Windows.Forms;
  */
 namespace COMP123_S2017_L12_02
 {
-    static class Program
+    public static class Program
     {
+        // created reference to Forms
+        public static CalculatorForm calculatorForm;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main()
         {
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            calculatorForm = new CalculatorForm(); // instantiate a new object of type CalculatorForm
             Application.Run(new SplashForm());
         }
     }

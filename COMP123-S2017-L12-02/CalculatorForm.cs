@@ -12,7 +12,7 @@ using System.Windows.Forms;
  * Name:Yanying Zhan
  * Date: Aug 3
  * Description: Calculator Demo Projet
- * Version: 0.1 - Create the Project
+ * Version: 0.2 - Added the CalculatorButton_Click
  */
 namespace COMP123_S2017_L12_02
 {
@@ -49,6 +49,20 @@ namespace COMP123_S2017_L12_02
         }
 
         private void button10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CalculatorForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+        /// <summary>
+        /// This is the shared event handler for the calculator buttons
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CalculatorButton_Click(object sender, EventArgs e)
         {
 
         }
