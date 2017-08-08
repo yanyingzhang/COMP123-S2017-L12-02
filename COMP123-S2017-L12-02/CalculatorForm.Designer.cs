@@ -307,6 +307,7 @@
             this.ResultTextBox.ReadOnly = true;
             this.ResultTextBox.Size = new System.Drawing.Size(287, 83);
             this.ResultTextBox.TabIndex = 1;
+            this.ResultTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.ResultTextBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // CalculatorForm

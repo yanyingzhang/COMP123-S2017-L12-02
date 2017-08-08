@@ -12,7 +12,7 @@ using System.Windows.Forms;
  * Name:Yanying Zhan
  * Date: Aug 3
  * Description: Calculator Demo Projet
- * Version: 0.2 - Added the CalculatorButton_Click
+ * Version: 0.3 - Added the Shared event handler for the operator button
  */
 namespace COMP123_S2017_L12_02
 {
@@ -59,10 +59,23 @@ namespace COMP123_S2017_L12_02
         }
         /// <summary>
         /// This is the shared event handler for the calculator buttons
+        /// not including the opertor Buttons
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void CalculatorButton_Click(object sender, EventArgs e)
+        {
+            //Button calculatorButton = (Button)sender; //method 1
+            Button calculatorButton = sender as Button; //method 2
+            ResultTextBox.Text += calculatorButton.Text;
+            //Debug.writeLine("A Calculator Button was clicked");
+        }
+        /// <summary>
+        /// This is a shared event handler for the 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OperatorButton_Click(object sender, EventArgs e)
         {
 
         }
