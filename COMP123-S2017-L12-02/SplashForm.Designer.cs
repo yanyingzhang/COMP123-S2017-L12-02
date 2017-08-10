@@ -51,7 +51,6 @@
             this.WelcomeLabel.Size = new System.Drawing.Size(213, 58);
             this.WelcomeLabel.TabIndex = 0;
             this.WelcomeLabel.Text = "  Welcome to my \r\nawsome calculator";
-            this.WelcomeLabel.Click += new System.EventHandler(this.label1_Click);
             // 
             // pictureBox1
             // 
@@ -74,7 +73,6 @@
             this.Name = "SplashForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SplashForm";
-            this.Load += new System.EventHandler(this.SplashForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -88,7 +88,7 @@
             this.ButtonLabel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.ButtonLabel.Size = new System.Drawing.Size(290, 299);
             this.ButtonLabel.TabIndex = 0;
-            this.ButtonLabel.Paint += new System.Windows.Forms.PaintEventHandler(this.ButtonLabel_Paint);
+            this.ButtonLabel.Paint += new System.Windows.Forms.PaintEventHandler(this.CalculatorButton_Click);
             // 
             // EqualSign
             // 
@@ -141,6 +141,7 @@
             this.PlusButton.TabIndex = 15;
             this.PlusButton.Text = "+";
             this.PlusButton.UseVisualStyleBackColor = true;
+            this.PlusButton.Click += new System.EventHandler(this.CalculatorButton_Click);
             // 
             // ThreeButton
             // 
@@ -152,6 +153,7 @@
             this.ThreeButton.TabIndex = 14;
             this.ThreeButton.Text = "3";
             this.ThreeButton.UseVisualStyleBackColor = false;
+            this.ThreeButton.Click += new System.EventHandler(this.CalculatorButton_Click);
             // 
             // TwoButton
             // 
@@ -163,6 +165,7 @@
             this.TwoButton.TabIndex = 13;
             this.TwoButton.Text = "2";
             this.TwoButton.UseVisualStyleBackColor = false;
+            this.TwoButton.Click += new System.EventHandler(this.CalculatorButton_Click);
             // 
             // OneButton
             // 
@@ -174,6 +177,7 @@
             this.OneButton.TabIndex = 12;
             this.OneButton.Text = "1";
             this.OneButton.UseVisualStyleBackColor = false;
+            this.OneButton.Click += new System.EventHandler(this.CalculatorButton_Click);
             // 
             // MinusButton
             // 
@@ -195,6 +199,7 @@
             this.SixButton.TabIndex = 10;
             this.SixButton.Text = "6";
             this.SixButton.UseVisualStyleBackColor = false;
+            this.SixButton.Click += new System.EventHandler(this.CalculatorButton_Click);
             // 
             // FiveButton
             // 
@@ -206,7 +211,7 @@
             this.FiveButton.TabIndex = 9;
             this.FiveButton.Text = "5";
             this.FiveButton.UseVisualStyleBackColor = false;
-            this.FiveButton.Click += new System.EventHandler(this.button10_Click);
+            this.FiveButton.Click += new System.EventHandler(this.CalculatorButton_Click);
             // 
             // FourButton
             // 
@@ -218,7 +223,7 @@
             this.FourButton.TabIndex = 8;
             this.FourButton.Text = "4";
             this.FourButton.UseVisualStyleBackColor = false;
-            this.FourButton.Click += new System.EventHandler(this.button9_Click);
+            this.FourButton.Click += new System.EventHandler(this.CalculatorButton_Click);
             // 
             // TimeButton
             // 
@@ -240,6 +245,7 @@
             this.NineButton.TabIndex = 6;
             this.NineButton.Text = "9";
             this.NineButton.UseVisualStyleBackColor = false;
+            this.NineButton.Click += new System.EventHandler(this.CalculatorButton_Click);
             // 
             // EightButton
             // 
@@ -251,7 +257,7 @@
             this.EightButton.TabIndex = 5;
             this.EightButton.Text = "8";
             this.EightButton.UseVisualStyleBackColor = false;
-            this.EightButton.Click += new System.EventHandler(this.button6_Click);
+            this.EightButton.Click += new System.EventHandler(this.CalculatorButton_Click);
             // 
             // SevenButton
             // 
@@ -308,7 +314,7 @@
             this.ResultTextBox.Size = new System.Drawing.Size(287, 83);
             this.ResultTextBox.TabIndex = 1;
             this.ResultTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.ResultTextBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.ResultTextBox.TextChanged += new System.EventHandler(this.CalculatorButton_Click);
             // 
             // CalculatorForm
             // 
@@ -321,7 +327,7 @@
             this.Name = "CalculatorForm";
             this.Text = "Calculator";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CalculatorForm_FormClosing);
-            this.Load += new System.EventHandler(this.CalculatorForm_Load);
+            this.Load += new System.EventHandler(this.CalculatorButton_Click);
             this.ButtonLabel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

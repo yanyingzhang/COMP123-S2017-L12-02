@@ -44,19 +44,10 @@ namespace COMP123_S2017_L12_02
         {
             //CalculatorForm calculatorForm = new CalculatorForm();
             this.CalculatorForm.Show();
+            //Program.calculatorForm.Show();
             this.Hide();
 
             SplashFormTimer.Enabled = false; // turn timer off
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void SplashForm_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

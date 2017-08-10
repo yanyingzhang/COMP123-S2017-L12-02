@@ -8,7 +8,7 @@ using System.Windows.Forms;
  * Name:Yanying Zhan
  * Date: Aug 3
  * Description: Calculator Demo Projet
- * Version: 0.2 - Start the SplashForm first
+ * Version: 0.3 - Create an instance of the calculatorForm object
  */
 namespace COMP123_S2017_L12_02
 {
