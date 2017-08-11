@@ -189,6 +189,10 @@ namespace COMP123_S2017_Lesson12B2
             }
         }
 
+        /// <summary>
+        /// This is the event to delete the last digit entered to the screen
+        /// </summary>
+        /// <param name="operand"></param>
         private void _backButton(double operand)
         {
             string operandString = Convert.ToString(operand);
@@ -200,7 +204,6 @@ namespace COMP123_S2017_Lesson12B2
             {
                 ResultTextBox.Text = "0";
             }
-            
         }
         /// This method shows the Result of the last operation in the ResultTextBox
         /// </summary>
@@ -218,7 +221,6 @@ namespace COMP123_S2017_Lesson12B2
         /// <param name="text2"></param>
         private void _calculate(double operand, string operatorString)
         {
-
             OperandList.Add(operand);
             if (OperandList.Count > 1)
             {
@@ -237,6 +239,8 @@ namespace COMP123_S2017_Lesson12B2
                         this.Result = this.OperandList[0] / this.OperandList[1];
                         break;
                 }
+                //this.ResultTextBox.Text = this.Result.ToString();
+                //this.OperandList[0] = Result;
                 this.OperandList.Clear();
                 this.OperandList.Add(this.Result);
                 this.IsOperandTwo = false;
