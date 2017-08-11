@@ -9,42 +9,47 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 /*
- * Name:Yanying Zhan
- * Date: Aug 8
- * Description: SplashForm
- * Version: 0.3 - Created a public property as an Alias to Program.calculatorForm
+ * Name: Yanying Zhang - 300926213
+ * Date: August 8, 2017
+ * Description: This is the SplashForm class
+ * Version: 0.4 - Created a Public Property as an Alias to Program.calculatorForm
  */
-namespace COMP123_S2017_L12_02
+
+namespace COMP123_S2017_Lesson12B2
 {
     public partial class SplashForm : Form
     {
-        // PRIVATE INSTANCE VARIABLES
-
         // PUBLIC PROPERTIES
         public CalculatorForm CalculatorForm
         {
+
             get
             {
                 return Program.calculatorForm;
             }
+
         }
 
-        // CONSTRUCTORS
+        // CONSTRUCTORS ++++++++++++++++++++++++++++++++++++++++++++++++
+
+        /// <summary>
+        /// This is the main constructor for the SplashForm
+        /// </summary>
         public SplashForm()
         {
             InitializeComponent();
         }
 
         /// <summary>
-        /// This is the event handler for the "tick"
+        /// This is the event handler for the "Tick"
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void SplashFormTimer_Tick(object sender, EventArgs e)
         {
-            //CalculatorForm calculatorForm = new CalculatorForm();
+
             this.CalculatorForm.Show();
-            //Program.calculatorForm.Show();
+
             this.Hide();
 
             SplashFormTimer.Enabled = false; // turn timer off

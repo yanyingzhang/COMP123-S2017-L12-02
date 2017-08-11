@@ -5,27 +5,31 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 /*
- * Name:Yanying Zhan
- * Date: Aug 3
- * Description: Calculator Demo Projet
- * Version: 0.3 - Create an instance of the calculatorForm object
+ * Name: Yanying Zhang - 300926213
+ * Date: August 3, 2017
+ * Description: Calculator Demo Project
+ * Version: 0.3 - created an instance of the calculatorForm object
  */
-namespace COMP123_S2017_L12_02
+
+namespace COMP123_S2017_Lesson12B2
 {
     public static class Program
     {
-        // created reference to Forms
+        // Create Reference to Forms
         public static CalculatorForm calculatorForm;
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        public static void Main()
         {
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            calculatorForm = new CalculatorForm(); // instantiate a new object of type CalculatorForm
+
+            // Instantiate a new object of type CalculatorForm
+            calculatorForm = new CalculatorForm();
+
             Application.Run(new SplashForm());
         }
     }

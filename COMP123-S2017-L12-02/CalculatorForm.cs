@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -9,69 +10,107 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 /*
- * Name:Yanying Zhan
- * Date: Aug 3
- * Description: Calculator Demo Projet
- * Version: 0.6 - Added the _showResult method;
+ * Name: Yanying Zhang - 300926213
+ * Date: August 3, 2017
+ * Description: Calculator Demo Project
+ * Version: 1.2 - Fixed bug in CalculatorButton_Click 
  */
-namespace COMP123_S2017_L12_02
+
+namespace COMP123_S2017_Lesson12B2
 {
     public partial class CalculatorForm : Form
-    { 
-        // PRIVATE INSTANCE VARIABLE
+    {
+        // PRIVATE INSTANCE VARIABLES
         private bool _isDecimalClicked;
+
         private string _currentOperator;
+
         private List<double> _operandList;
+
         private double _result;
 
-        //PUBLIC PROPERTIES
+        private bool _isOperandTwo;
+
+        // PUBLIC PROPERTIES
         public bool IsDecimalClicked
         {
+
             get
             {
                 return this._isDecimalClicked;
             }
+
             set
             {
                 this._isDecimalClicked = value;
             }
+
         }
+
         public string CurrentOperator
         {
+
             get
             {
                 return this._currentOperator;
             }
+
             set
             {
                 this._currentOperator = value;
             }
+
         }
+
         public List<double> OperandList
         {
+
             get
             {
                 return this._operandList;
             }
+
             set
             {
                 this._operandList = value;
             }
+
         }
+
         public double Result
         {
+
             get
             {
                 return this._result;
             }
+
             set
             {
                 this._result = value;
             }
+
         }
 
-        //CONSTRUCTORS
+        public bool IsOperandTwo
+        {
 
+            get
+            {
+                return this._isOperandTwo;
+            }
+
+            set
+            {
+                this._isOperandTwo = value;
+            }
+        }
+
+        // CONSTRUCTORS
+
+        /// <summary>
+        /// This is the main constructor for the CalculatorForm class
+        /// </summary>
         public CalculatorForm()
         {
             InitializeComponent();
@@ -88,16 +127,14 @@ namespace COMP123_S2017_L12_02
         }
 
         /// <summary>
-        /// This is the shared event handler for the calculator buttons
-        /// not including the opertor Buttons
+        /// This is the shared event handler for the Calculator Buttons
+        /// Not including the Opertor Buttons
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void CalculatorButton_Click(object sender, EventArgs e)
         {
-            //Button calculatorButton = (Button)sender; //method 1
-            Button calculatorButton = sender as Button; //method 2
-            double operand = this._convertOperand(ResultTextBox.Text);
+            Button calculatorButton = sender as Button; // downcasting
 
             if ((this.IsDecimalClicked) && (calculatorButton.Text == "."))
             {
@@ -109,11 +146,12 @@ namespace COMP123_S2017_L12_02
                 this.IsDecimalClicked = true;
             }
 
+
             if (ResultTextBox.Text == "0")
             {
-                if (calculatorButton.Text == "0")
+                if (calculatorButton.Text == ".")
                 {
-                    ResultTextBox.Text = calculatorButton.Text;
+                    ResultTextBox.Text += calculatorButton.Text;
                 }
                 else
                 {
@@ -122,38 +160,55 @@ namespace COMP123_S2017_L12_02
             }
             else
             {
-                ResultTextBox.Text += calculatorButton.Text;
+                if ((OperandList.Count > 0) && (this._isOperandTwo == false))
+                {
+
+                    ResultTextBox.Text = calculatorButton.Text;
+                    this._isOperandTwo = true;
+
+                }
+                else
+                {
+                    ResultTextBox.Text += calculatorButton.Text;
+                }
+
             }
+
+
+
+            //Debug.WriteLine("A Calculator Button was clicked");
         }
-            //ResultTextBox.Text += calculatorButton.Text;
-        
+
         /// <summary>
-        /// This is a shared event handler for the 
+        /// This is a shared event handler for the Operator Buttons of the calculator
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void OperatorButton_Click(object sender, EventArgs e)
         {
-            Button operatorButton = sender as Button;
+            Button operatorButton = sender as Button; // downcasting
+
+            double operand = this._convertOperand(ResultTextBox.Text); // convert to number
+
 
             switch (operatorButton.Text)
             {
                 case "C":
                     this._clear();
                     break;
-                case "+":
-                    break;
-                case "-":
+                case "=":
+                    this._showResult(operand);
                     break;
                 case "⌫":
                     break;
-                case "=":
-                    this._showResult(operand);
+                case "±":
                     break;
                 default:
                     this._calculate(operand, operatorButton.Text);
                     break;
             }
+
+
         }
 
         /// <summary>
@@ -162,37 +217,23 @@ namespace COMP123_S2017_L12_02
         /// <param name="text"></param>
         private void _showResult(double operand)
         {
-            this._calculate(operand,this.CurrentOperator);
+            this._calculate(operand, this.CurrentOperator);
             ResultTextBox.Text = this.Result.ToString();
+
         }
 
         /// <summary>
-        /// This is the private _clear method
-        /// It resets the calculator
+        /// This method calculates the result of all the operands in the OperandList
         /// </summary>
-        private void _clear()
-        {
-            this.IsDecimalClicked = false;
-            ResultTextBox.Text = "0";
-            this.CurrentOperator = "C";
-            this.OperandList = new List<double>();
-        }
-
-        private void CalculatorForm_Loade(object sender, EventArgs e)
-        {
-            this._clear();
-        }
-        /// <summary>
-        /// This method calculates the result of all the operands in the operandList
-        /// </summary>
-        /// <param name="operandString"></param>
-        /// <param name="operatorString"></param>
+        /// <param name="text1"></param>
+        /// <param name="text2"></param>
         private void _calculate(double operand, string operatorString)
         {
+
             OperandList.Add(operand);
             if (OperandList.Count > 1)
             {
-                switch(operatorString)
+                switch (operatorString)
                 {
                     case "+":
                         this.Result = this.OperandList[0] + this.OperandList[1];
@@ -201,22 +242,56 @@ namespace COMP123_S2017_L12_02
                         this.Result = this.OperandList[0] - this.OperandList[1];
                         break;
                 }
+                this.OperandList.Clear();
+                this.OperandList.Add(this.Result);
+                this.IsOperandTwo = false;
             }
+
             this.CurrentOperator = operatorString;
         }
-        private double _convertOperand(double operand)
+
+        /// <summary>
+        /// This method converts the string from the ResultTextBox to a number
+        /// </summary>
+        /// <param name="operandString"></param>
+        /// <returns></returns>
+        private double _convertOperand(string operandString)
         {
             try
             {
-                return Convert.ToDouble(operand);
+                return Convert.ToDouble(operandString);
             }
             catch (Exception exception)
             {
-                //Debug.WriteLine("An Error Occurred");
-                //Debug.WriteLine(exception.Message);
-                
+
+                Debug.WriteLine("An Error Occurred");
+                Debug.WriteLine(exception.Message);
             }
             return 0;
+
+        }
+
+        /// <summary>
+        /// This is the private _clear method. It resets / clears the calculator.
+        /// </summary>
+        private void _clear()
+        {
+            this.IsDecimalClicked = false;
+            ResultTextBox.Text = "0";
+            this.CurrentOperator = "C";
+            this.OperandList = new List<double>();
+            this.IsOperandTwo = false;
+            this.Result = 0;
+        }
+
+        /// <summary>
+        /// This is the event handler for the "Load" event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CalculatorForm_Load(object sender, EventArgs e)
+        {
+            this._clear();
         }
     }
 }
