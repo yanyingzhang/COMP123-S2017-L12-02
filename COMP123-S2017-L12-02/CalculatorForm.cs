@@ -13,7 +13,7 @@ using System.Windows.Forms;
  * Name: Yanying Zhang - 300926213
  * Date: August 3, 2017
  * Description: Calculator Demo Project
- * Version: 1.3 - Added * and / inside OperatorButton_Click method
+ * Version: 1.4 - Added _backButton method
  */
 
 namespace COMP123_S2017_Lesson12B2
@@ -169,8 +169,7 @@ namespace COMP123_S2017_Lesson12B2
             Button operatorButton = sender as Button; // downcasting
 
             double operand = this._convertOperand(ResultTextBox.Text); // convert to number
-
-
+            
             switch (operatorButton.Text)
             {
                 case "C":
@@ -180,6 +179,7 @@ namespace COMP123_S2017_Lesson12B2
                     this._showResult(operand);
                     break;
                 case "⌫":
+                    this._backButton(operand);
                     break;
                 case "±":
                     break;
@@ -189,7 +189,19 @@ namespace COMP123_S2017_Lesson12B2
             }
         }
 
-        /// <summary>
+        private void _backButton(double operand)
+        {
+            string operandString = Convert.ToString(operand);
+            if (operandString.Length >= 2)
+            {
+                ResultTextBox.Text = operandString.Substring(0, operandString.Length - 1);
+            }
+            else
+            {
+                ResultTextBox.Text = "0";
+            }
+            
+        }
         /// This method shows the Result of the last operation in the ResultTextBox
         /// </summary>
         /// <param name="text"></param>
@@ -245,7 +257,6 @@ namespace COMP123_S2017_Lesson12B2
             }
             catch (Exception exception)
             {
-
                 Debug.WriteLine("An Error Occurred");
                 Debug.WriteLine(exception.Message);
             }
