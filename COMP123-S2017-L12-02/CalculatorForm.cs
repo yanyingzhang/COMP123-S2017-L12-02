@@ -13,7 +13,7 @@ using System.Windows.Forms;
  * Name: Yanying Zhang - 300926213
  * Date: August 3, 2017
  * Description: Calculator Demo Project
- * Version: 1.2 - Fixed bug in CalculatorButton_Click 
+ * Version: 1.3 - Added * and / inside OperatorButton_Click method
  */
 
 namespace COMP123_S2017_Lesson12B2
@@ -34,72 +34,58 @@ namespace COMP123_S2017_Lesson12B2
         // PUBLIC PROPERTIES
         public bool IsDecimalClicked
         {
-
             get
             {
                 return this._isDecimalClicked;
             }
-
             set
             {
                 this._isDecimalClicked = value;
             }
-
         }
 
         public string CurrentOperator
         {
-
             get
             {
                 return this._currentOperator;
             }
-
             set
             {
                 this._currentOperator = value;
             }
-
         }
 
         public List<double> OperandList
         {
-
             get
             {
                 return this._operandList;
             }
-
             set
             {
                 this._operandList = value;
             }
-
         }
 
         public double Result
         {
-
             get
             {
                 return this._result;
             }
-
             set
             {
                 this._result = value;
             }
-
         }
 
         public bool IsOperandTwo
         {
-
             get
             {
                 return this._isOperandTwo;
             }
-
             set
             {
                 this._isOperandTwo = value;
@@ -162,20 +148,14 @@ namespace COMP123_S2017_Lesson12B2
             {
                 if ((OperandList.Count > 0) && (this._isOperandTwo == false))
                 {
-
                     ResultTextBox.Text = calculatorButton.Text;
                     this._isOperandTwo = true;
-
                 }
                 else
                 {
                     ResultTextBox.Text += calculatorButton.Text;
                 }
-
             }
-
-
-
             //Debug.WriteLine("A Calculator Button was clicked");
         }
 
@@ -207,8 +187,6 @@ namespace COMP123_S2017_Lesson12B2
                     this._calculate(operand, operatorButton.Text);
                     break;
             }
-
-
         }
 
         /// <summary>
@@ -219,7 +197,6 @@ namespace COMP123_S2017_Lesson12B2
         {
             this._calculate(operand, this.CurrentOperator);
             ResultTextBox.Text = this.Result.ToString();
-
         }
 
         /// <summary>
@@ -241,12 +218,17 @@ namespace COMP123_S2017_Lesson12B2
                     case "-":
                         this.Result = this.OperandList[0] - this.OperandList[1];
                         break;
+                    case "x":
+                        this.Result = this.OperandList[0] * this.OperandList[1];
+                        break;
+                    case "÷":
+                        this.Result = this.OperandList[0] / this.OperandList[1];
+                        break;
                 }
                 this.OperandList.Clear();
                 this.OperandList.Add(this.Result);
                 this.IsOperandTwo = false;
             }
-
             this.CurrentOperator = operatorString;
         }
 
@@ -268,7 +250,6 @@ namespace COMP123_S2017_Lesson12B2
                 Debug.WriteLine(exception.Message);
             }
             return 0;
-
         }
 
         /// <summary>
